@@ -28,15 +28,17 @@ jobs:
       run: |
         pip install -r ./app/requirements.txt
         pip install pylint
+        pip install pylint-json2html
  
     - name: Lint code
-      run: pylint **/*.py --output-format=text --output=pylint-report.txt
- 
+      run: |
+        pylint **/*.py > ./pylint-report.json
+        pylint-json2html -o ./pylint-report.html ./pylint-reportreport.json
     - name: Save lint report
       uses: actions/upload-artifact@v1
       with:
         name: pylint-report
-        path: pylint-report.txt
+        path: ./
  
   cyclomatic:
  
