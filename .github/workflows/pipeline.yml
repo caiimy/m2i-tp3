@@ -1,102 +1,93 @@
 name: CI Pipeline
-
-on: Push
-
+ 
+on: push
+ 
 jobs:
+ 
   clone-repo:
+ 
     runs-on: ubuntu-latest
+ 
     steps:
-    - name: Checkout
+ 
+    - name: Checkout Repo
       uses: actions/checkout@v3
       with:
         repository: vanessakovalsky/python-api-handle-it
         path: ./python-api-handle-it
-
-    # - name: clone repo code
-    #   run: |
-    #     git clone https://github.com/vanessakovalsky/python-api-handle-it.git
-    #     cd python-api-handle-it 
-
+ 
   lint:
+ 
     needs: clone-repo
+ 
     runs-on: ubuntu-latest
-
+ 
     steps:
+ 
     - uses: actions/checkout@v3
+ 
     - name: Install dependencies
-      run: pip install flake8
+      run: |
+        pip install flake8
  
-    - name: Linter code
-      run: flake8 . --format=text --output-file=flake8-report.txt
+    - name: Lint
+      run: |
+        flake8 . --format=text --output-file=flake8-report.txt
  
-    - name: Save lint report
+    - name: Upload Lint Report
       uses: actions/upload-artifact@v3
       with:
         name: flake8-report
         path: flake8-report.txt
-
-  # duplicate:
- 
-  #   needs: lint
-  #   runs-on: ubuntu-latest
- 
-  #   steps:
-  #   - uses: actions/checkout@v2
-  #   - name: Install dependencies
-  #     run: pip install clonedigger
- 
-  #   - name: Check duplicates
-  #     run: clonedigger --output-file=duplicate-report.txt
- 
-  #   - name: Save duplicate report
-  #     uses: actions/upload-artifact@v1
-  #     with:
-  #       name: duplicate-report
-  #       path: duplicate-report.txt 
  
   cyclomatic:
  
-    # needs: [lint, duplicate]
-    # needs: lint
-    needs: clone-repo
+    needs: lint
+ 
     runs-on: ubuntu-latest
  
     steps:
+ 
     - uses: actions/checkout@v3
+ 
     - name: Install dependencies
-      run: pip install radon
+      run: |
+        pip install radon
  
     - name: Check complexity
-      run: radon cc -s -a -nb --total-average --output-file=complexity-report.txt .
+      run: |
+        radon cc -s -a -nb --total-average --output-file=complexity-report.txt .
  
-    - name: Save complexity report
+    - name: Upload Complexity Report
       uses: actions/upload-artifact@v3
-      with: 
+      with:
         name: complexity-report
         path: complexity-report.txt
  
   test:
  
-    # needs: cyclomatic
-    needs: clone-repo
+    needs: cyclomatic
+ 
     runs-on: ubuntu-latest
  
     steps:
+ 
     - uses: actions/checkout@v3
+ 
     - name: Install dependencies
       run: |
         cd app
         pip install -r requirements.txt
  
     - name: Run tests
-      run: python -m unittest test/unit/test.py 
-
+      run: |
+        python -m unittest test/unit/test.py
  
-    - name: Save test report
+    - name: Upload Test Report
       uses: actions/upload-artifact@v3
       with:
         name: test-report
-        path: test-report.xml
+        path: test/unit/test-report.xml
  
   build:
  
@@ -115,7 +106,9 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
  
     - name: Build image
-      run: docker build . --file Dockerfile --tag myimage:$(date +%s)
+      run: |
+        docker build . --file Dockerfile --tag myimage:1.0.0
  
     - name: Push image
-      run: docker push myimage:$(date +%s)
+      run: | 
+        docker push myimage:1.0.0
