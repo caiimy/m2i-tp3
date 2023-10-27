@@ -18,6 +18,7 @@ jobs:
     #     cd python-api-handle-it 
 
   linter:
+    needs: clone-repo
     runs-on: ubuntu-latest
 
     steps:
