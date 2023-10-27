@@ -20,6 +20,7 @@ jobs:
       with:
         name: repo cloned
         path: ./python-api-handle-it
+
   lint:
  
     needs: clone-repo
@@ -28,7 +29,11 @@ jobs:
  
     steps:
  
-    - uses: actions/checkout@v2
+    - name: Checkout Repo
+      uses: actions/checkout@v3
+      with:
+        repository: caiimy/m2i-tp3/python-api-handle-it
+
     - name: Install dependencies
       run: |
         pip install -r ./app/requirements.txt
