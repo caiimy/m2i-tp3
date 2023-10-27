@@ -47,8 +47,9 @@ jobs:
  
   cyclomatic:
  
-    needs: [lint, duplicate]
- 
+    # needs: [lint, duplicate]
+    needs: lint
+
     runs-on: ubuntu-latest
  
     steps:
