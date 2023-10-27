@@ -14,7 +14,12 @@ jobs:
       with:
         repository: vanessakovalsky/python-api-handle-it
         path: ./python-api-handle-it
- 
+
+    - name: Save repo
+      uses: actions/upload-artifact@v1
+      with:
+        name: repo cloned
+        path: ./python-api-handle-it
   lint:
  
     needs: clone-repo
