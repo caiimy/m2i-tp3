@@ -15,28 +15,46 @@ jobs:
         repository: vanessakovalsky/python-api-handle-it
         path: ./python-api-handle-it
  
-  lint:
+  # lint:
  
+  #   needs: clone-repo
+ 
+  #   runs-on: ubuntu-latest
+ 
+  #   steps:
+ 
+  #   - uses: actions/checkout@v2
+  #   - name: Install dependencies
+  #     run: |
+  #       pip install -r ./app/requirements.txt
+  #       pip install pylint
+ 
+  #   - name: Lint code
+  #     run: pylint **/*.py --output-format=text
+ 
+  #   - name: Save lint report
+  #     uses: actions/upload-artifact@v1
+  #     with:
+  #       name: pylint-report
+  #       path: pylint-report.txt
+    lint:
     needs: clone-repo
- 
     runs-on: ubuntu-latest
- 
+
     steps:
- 
     - uses: actions/checkout@v2
     - name: Install dependencies
       run: |
-        pip install -r ./app/requirements.txt
-        pip install pylint
+        pip install flake8
  
-    - name: Lint code
-      run: pylint **/*.py --output-format=text
+    - name: Linter code
+      run: flake8 . --format=text > flake8-report.txt
  
     - name: Save lint report
       uses: actions/upload-artifact@v1
       with:
-        name: pylint-report
-        path: pylint-report.txt
+        name: flake8-report
+        path: flake8-report.txt
  
   cyclomatic:
  
