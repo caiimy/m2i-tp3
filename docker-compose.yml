@@ -1,0 +1,8 @@
+version: "3.7"
+ 
+services:
+  github_runner:
+    image: my-github-runner-image
+ 
+  docker:
+    image: docker:19.03.8-dind
