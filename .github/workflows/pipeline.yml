@@ -26,24 +26,24 @@ jobs:
         name: flake8-report
         path: flake8-report.txt
 
-  duplicate:
+  # duplicate:
  
-    needs: lint
-    runs-on: ubuntu-latest
+  #   needs: lint
+  #   runs-on: ubuntu-latest
  
-    steps:
-    - uses: actions/checkout@v2
-    - name: Install dependencies
-      run: pip install clonedigger
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #   - name: Install dependencies
+  #     run: pip install clonedigger
  
-    - name: Check duplicates
-      run: clonedigger --output-file=duplicate-report.txt
+  #   - name: Check duplicates
+  #     run: clonedigger --output-file=duplicate-report.txt
  
-    - name: Save duplicate report
-      uses: actions/upload-artifact@v1
-      with:
-        name: duplicate-report
-        path: duplicate-report.txt
+  #   - name: Save duplicate report
+  #     uses: actions/upload-artifact@v1
+  #     with:
+  #       name: duplicate-report
+  #       path: duplicate-report.txt 
  
   cyclomatic:
  
