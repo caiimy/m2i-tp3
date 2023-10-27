@@ -3,20 +3,19 @@
 
 name: CI Pipeline
 
-- name: checkout code
-  uses: actions/checkout@v2
-  with:
-    repository: 'vanessakovalsky/python-api-handle-it'
-    ref: master # Nom de la branche
-    fetch-depth: 0 
-
 on: push
 jobs:
     
   lint:
- 
     runs-on: ubuntu-latest
     steps:
+    - name: checkout code
+      uses: actions/checkout@v2
+      with:
+        repository: 'vanessakovalsky/python-api-handle-it'
+        ref: master # Nom de la branche
+        fetch-depth: 0 
+        
     - uses: actions/checkout@v2
     - name: Install dependencies
       run: pip install pylint
