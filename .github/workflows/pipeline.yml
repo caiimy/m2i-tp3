@@ -15,16 +15,16 @@ jobs:
 
     - uses: actions/checkout@v2
     - name: Install dependencies
-      run: pip install pylint
+      run: pip install flake8
  
     - name: Lint code
-      run: pylint app/**/*.py --output-format=text
+      run: run: flake8 . --format=text
  
     - name: Save lint report
       uses: actions/upload-artifact@v1
       with:
-        name: pylint-report
-        path: pylint-report.txt
+        name: flake8-report
+        path: flake8-report.txt
 
   duplicate:
  
