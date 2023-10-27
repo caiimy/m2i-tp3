@@ -37,7 +37,7 @@ jobs:
   #     with:
   #       name: pylint-report
   #       path: pylint-report.txt
-    lint:
+  lint:
     needs: clone-repo
     runs-on: ubuntu-latest
 
