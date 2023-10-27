@@ -18,7 +18,7 @@ jobs:
       run: pip install flake8
  
     - name: Lint code
-      run: run: flake8 . --format=text
+      run: flake8 . --format=text
  
     - name: Save lint report
       uses: actions/upload-artifact@v1
