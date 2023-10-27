@@ -31,7 +31,7 @@ jobs:
  
     - name: Lint
       run: |
-        flake8 . --output-file=flake8-report.txt dir/
+        flake8 . --format=text --output-file=flake8-report.txt dir/
  
     - name: Upload Lint Report
       uses: actions/upload-artifact@v3
