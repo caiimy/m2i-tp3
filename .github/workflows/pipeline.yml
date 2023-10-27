@@ -11,7 +11,7 @@ jobs:
       with:
         repository: 'vanessakovalsky/python-api-handle-it'
         ref: master # Nom de la branche
-        path: ./python-api-handle-it
+        path: caiimy/python-api-handle-it
 
     #- uses: actions/checkout@v2
     - name: Install dependencies
