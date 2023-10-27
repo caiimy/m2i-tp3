@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         repository: vanessakovalsky/python-api-handle-it
         path: ./python-api-handle-it
@@ -18,10 +18,10 @@ jobs:
     #     cd python-api-handle-it 
 
   linter:
-    needs: clone-repo
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Install dependencies
       run: pip install flake8
  
@@ -29,7 +29,7 @@ jobs:
       run: flake8 . --format=text --output-file=flake8-report.txt
  
     - name: Save lint report
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v3
       with:
         name: flake8-report
         path: flake8-report.txt
@@ -61,7 +61,7 @@ jobs:
     runs-on: ubuntu-latest
  
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Install dependencies
       run: pip install radon
  
@@ -69,7 +69,7 @@ jobs:
       run: radon cc -s -a -nb --total-average --output-file=complexity-report.txt .
  
     - name: Save complexity report
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v3
       with: 
         name: complexity-report
         path: complexity-report.txt
@@ -81,7 +81,7 @@ jobs:
     runs-on: ubuntu-latest
  
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Install dependencies
       run: |
         cd app
@@ -92,7 +92,7 @@ jobs:
 
  
     - name: Save test report
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v3
       with:
         name: test-report
         path: test-report.xml
@@ -105,7 +105,7 @@ jobs:
  
     steps:
  
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
  
     - name: Login to Docker Hub
       uses: docker/login-action@v1
