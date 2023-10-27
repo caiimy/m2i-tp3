@@ -23,21 +23,18 @@ jobs:
  
     steps:
  
-    - uses: actions/checkout@v3
- 
+    - uses: actions/checkout@v2
     - name: Install dependencies
-      run: |
-        pip install flake8
+      run: pip install pylint
  
-    - name: Lint
-      run: |
-        flake8 . --format=text --output-file=flake8-report.txt
+    - name: Lint code
+      run: pylint **/*.py --output-format=text
  
-    - name: Upload Lint Report
-      uses: actions/upload-artifact@v3
+    - name: Save lint report
+      uses: actions/upload-artifact@v1
       with:
-        name: flake8-report
-        path: ./flake8-report.txt
+        name: pylint-report
+        path: pylint-report.txt
  
   cyclomatic:
  
