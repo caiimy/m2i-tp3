@@ -17,15 +17,15 @@ jobs:
     #     git clone https://github.com/vanessakovalsky/python-api-handle-it.git
     #     cd python-api-handle-it 
 
-  lint:
+  linter:
     needs: clone-repo
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v2
     - name: Install dependencies
       run: pip install flake8
  
-    - name: Lint code
+    - name: Linter code
       run: flake8 . --format=text --output-file=flake8-report.txt
  
     - name: Save lint report
