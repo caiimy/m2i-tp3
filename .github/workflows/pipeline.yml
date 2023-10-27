@@ -75,11 +75,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install dependencies
-      uses: vanessakovalsky/python-api-handle-it
       run: pip install -r app/requirements.txt
  
     - name: Run tests
-      run: python -m unittest discover
+      run: python -m unittest discover -p "*.py" > test-report.xml
  
     - name: Save test report
       uses: actions/upload-artifact@v1
