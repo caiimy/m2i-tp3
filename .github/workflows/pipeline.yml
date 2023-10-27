@@ -31,13 +31,13 @@ jobs:
  
     - name: Lint
       run: |
-        flake8 . --output-file=flake8-report.txt
+        flake8 .
  
     - name: Upload Lint Report
       uses: actions/upload-artifact@v3
       with:
         name: flake8-report
-        path: flake8-report.txt
+        path: ./flake8-report.txt
  
   cyclomatic:
  
