@@ -28,15 +28,16 @@ jobs:
       run: |
         pip install -r ./app/requirements.txt
         pip install pylint
+        ls
  
     - name: Lint code
-      run: pylint **/*.py --fail-under=5 --output-format=text
+      run: pylint **/*.py --fail-under=5 --output-format=text --output-file=
  
     - name: Save lint report
       uses: actions/upload-artifact@v1
       with:
         name: pylint-report
-        path: ./pylint-report.txt
+        path: pylint-report.txt
   # lint:
   #   needs: clone-repo
   #   runs-on: ubuntu-latest
