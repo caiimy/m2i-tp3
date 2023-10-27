@@ -1,19 +1,21 @@
 name: CI Pipeline
 
 on: push
+
 jobs:
-    
-  lint:
+  clone-repot:
     runs-on: ubuntu-latest
     steps:
     - name: checkout code
-      uses: actions/checkout@v4
-      with:
-        github-server-url: 'https://github.com/vanessakovalsky/python-api-handle-it.git'
-        ref: master # Nom de la branche
-        path: caiimy/python-api-handle-it
+      uses: actions/checkout@v3
+      run: |
+        git clone https://github.com/vanessakovalsky/python-api-handle-it.git
+        cd python-api-handle-it 
 
-    - uses: actions/checkout@v4
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
     - name: Install dependencies
       run: pip install flake8
  
@@ -47,13 +49,13 @@ jobs:
  
   cyclomatic:
  
-    #needs: [lint, duplicate]
+    # needs: [lint, duplicate]
     needs: lint
 
     runs-on: ubuntu-latest
  
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v2
     - name: Install dependencies
       run: pip install radon
  
@@ -73,9 +75,9 @@ jobs:
     runs-on: ubuntu-latest
  
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v2
     - name: Install dependencies
-      run: pip install -r app/requirements.txt
+      run: pip install -r requirements.txt
  
     - name: Run tests
       run: python -m unittest discover -p "*.py" > test-report.xml
@@ -94,7 +96,7 @@ jobs:
  
     steps:
  
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v2
  
     - name: Login to Docker Hub
       uses: docker/login-action@v1
