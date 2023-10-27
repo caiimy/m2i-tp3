@@ -58,7 +58,7 @@ jobs:
       run: pip install radon
  
     - name: Check complexity
-      run: radon cc -s -a -nb --total-average .
+      run: radon cc -s -a -nb --total-average --output-file=complexity-report.txt .
  
     - name: Save complexity report
       uses: actions/upload-artifact@v1
