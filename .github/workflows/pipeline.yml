@@ -8,7 +8,6 @@ on:
 jobs:
  
   clone-repo:
- 
     runs-on: ubuntu-latest
  
     steps:
