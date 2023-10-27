@@ -1,6 +1,12 @@
 name: CI Pipeline
 
-on: push
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   clone-repo:
@@ -17,7 +23,7 @@ jobs:
     #     git clone https://github.com/vanessakovalsky/python-api-handle-it.git
     #     cd python-api-handle-it 
 
-  linter:
+  lint:
     needs: clone-repo
     runs-on: ubuntu-latest
 
@@ -100,7 +106,7 @@ jobs:
  
   build:
  
-    needs: [test, cyclomatic, linter]
+    needs: [test, cyclomatic, lint]
  
     runs-on: ubuntu-latest
  
