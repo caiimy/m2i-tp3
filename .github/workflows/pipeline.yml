@@ -30,7 +30,7 @@ jobs:
         pip install pylint
  
     - name: Lint code
-      run: pylint **/*.py --output-format=text > pylint-report.txt
+      run: pylint **/*.py --output-format=text
  
     - name: Save lint report
       uses: actions/upload-artifact@v1
