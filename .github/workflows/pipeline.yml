@@ -34,10 +34,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install dependencies
-      run: pip install clone_detector
+      run: pip install clonedigger
  
     - name: Check duplicates
-      run: clone_detector --output-file=duplicate-report.txt
+      run: clonedigger --output-file=duplicate-report.txt
  
     - name: Save duplicate report
       uses: actions/upload-artifact@v1
