@@ -32,7 +32,7 @@ jobs:
  
     - name: Lint
       run: |
-        flake8 ./python-api-handle-it --format=text --output-file=flake8-report.txt
+        flake8 /home/runner/work/m2i-tp3/m2i-tp3/python-api-handle-it/ --format=text 
  
     - name: Upload Lint Report
       uses: actions/upload-artifact@v3
