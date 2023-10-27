@@ -99,7 +99,7 @@ jobs:
  
   build:
  
-    needs: [test, cyclomatic, lint]
+    needs: [test, cyclomatic, linter]
  
     runs-on: ubuntu-latest
  
