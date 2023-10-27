@@ -6,8 +6,7 @@ name: CI Pipeline
 on: push
  
 jobs:
-  git:
-    name: checkout code
+  - name: checkout code
     uses: actions/checkout@v2
     with:
       ref: master # Nom de la branche 
