@@ -56,15 +56,8 @@ jobs:
     - name: Lint code
       working-directory: python-api-handle-it
       run: | 
-        pwd
-        echo "---------------------"
         mkdir report
-        ls
-        echo "----------------------------"
-        cd report
-        ls
-        echo "----------------------------"
-        pylint **/*.py --fail-under=5 --output-format=text > pylint-report.txt
+        pylint **/*.py --fail-under=5 --output-format=text > report/pylint-report.txt
  
     - name: Save lint report
       uses: actions/upload-artifact@v2
