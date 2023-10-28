@@ -12,14 +12,18 @@ jobs:
       run: |
         git clone https://github.com/vanessakovalsky/python-api-handle-it.git
 
-    - name: Save repo
-      uses: actions/upload-artifact@v1
-      with:
-        name: repo cloned
-        path: ./python-api-handle-it
-    
-    - name: check repo ls
-      run: ls
+    - name: Access cloned repository content
+      run: |
+        ls
+        Echo "Repo cloned"
+        cd python-api-handle-it
+        ls
+
+    - name: linter Install dependencies
+      run: |
+        pip install -r app/requirements.txt
+        pip install pylint
+        ls
 
   lint:
  
@@ -30,11 +34,6 @@ jobs:
     steps:
 
     - uses: actions/checkout@v3
-
-    - name: go to repo
-      run: |
-        ls
-        cd python-api-handle-it
       
     - name: Install dependencies
       run: |
