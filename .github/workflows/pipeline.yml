@@ -114,6 +114,7 @@ jobs:
       run: |
         cd app
         pip install -r requirements.txt
+        pip install html-testRunner
  
     - name: Run tests
       working-directory: python-api-handle-it
