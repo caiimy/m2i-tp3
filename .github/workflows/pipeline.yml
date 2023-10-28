@@ -51,7 +51,6 @@ jobs:
         name: upload artifact repo
 
     - name: Install dependencies
-      working-directory: python-api-handle-it
       run: |
         ls
         cd app
