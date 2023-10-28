@@ -45,13 +45,15 @@ jobs:
 
     - name: Install dependencies
       run: |
-        mkdir report
         cd app
         pip install -r requirements.txt
         pip install pylint
  
     - name: Lint code
-      run: pylint **/*.py --fail-under=5 --output-format=text > ../report/pylint-report.txt
+      run: | 
+        mkdir report
+        cd report
+        pylint **/*.py --fail-under=5 --output-format=text > ../report/pylint-report.txt
  
     - name: Save lint report
       uses: actions/upload-artifact@v2
