@@ -28,10 +28,14 @@ jobs:
     runs-on: ubuntu-latest
  
     steps:
-    - name: go to repo
-      run: cd python-api-handle-it
-      
+
     - uses: actions/checkout@v3
+
+    - name: go to repo
+      run: |
+        ls
+        cd python-api-handle-it
+      
     - name: Install dependencies
       run: |
         pip install -r ./app/requirements.txt
