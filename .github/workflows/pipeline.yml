@@ -15,7 +15,7 @@ jobs:
     - name: Access cloned repository content
       run: |
         ls
-        Echo "Repo cloned"
+        echo "Repo cloned"
         cd python-api-handle-it
         ls
 
