@@ -60,10 +60,11 @@ jobs:
       run: pylint **/*.py --fail-under=5 --output-format=text > pylint-report.txt
  
     - name: Save lint report
+      working-directory: python-api-handle-it
       uses: actions/upload-artifact@v1
       with:
         name: pylint-report
-        path: ./python-api-handle-it/pylint-report.txt
+        path: ./pylint-report.txt
   # lint:
   #   needs: clone-repo
   #   runs-on: ubuntu-latest
