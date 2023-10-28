@@ -149,6 +149,7 @@ jobs:
         echo "------------"
         ls
         echo "-----------------"
+        ls ..
         docker build . --file Dockerfile --tag myimage:1.0.0
  
     - name: Push image
