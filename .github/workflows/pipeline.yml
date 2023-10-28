@@ -40,9 +40,10 @@ jobs:
     runs-on: ubuntu-latest
  
     steps:
-    - name: working directory
-      working-directory: python-api-handle-it
+    - name: Checkout
       uses: actions/checkout@v3
+      with:
+        path: ./python-api-handle-it
       
     - name: Install dependencies
       #working-directory: python-api-handle-it
