@@ -45,6 +45,7 @@ jobs:
         path: ./python-api-handle-it
 
     - name: Install dependencies
+      working-directory: python-api-handle-it
       run: |
         pwd
         echo "----------------------"
@@ -53,6 +54,7 @@ jobs:
         pip install pylint
  
     - name: Lint code
+      working-directory: python-api-handle-it
       run: | 
         pwd
         echo "---------------------"
