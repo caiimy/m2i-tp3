@@ -151,6 +151,10 @@ jobs:
     - name: Build image
       working-directory: python-api-handle-it
       run: |
+        pwd
+        echo "------------"
+        ls
+        echo "-----------------"
         docker build . --file Dockerfile --tag myimage:1.0.0
  
     - name: Push image
