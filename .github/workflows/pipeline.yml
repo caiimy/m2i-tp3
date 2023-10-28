@@ -7,7 +7,7 @@ jobs:
   clone-repo:
     runs-on: ubuntu-latest
  
-    # steps:
+    steps:
     # - name: git clone repo
     #   run: |
     #     git clone https://github.com/vanessakovalsky/python-api-handle-it.git
