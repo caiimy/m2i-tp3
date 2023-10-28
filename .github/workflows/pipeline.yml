@@ -8,9 +8,7 @@ jobs:
     runs-on: ubuntu-latest
  
     steps:
-    # - name: git clone repo
-    #   run: |
-    #     git clone https://github.com/vanessakovalsky/python-api-handle-it.git
+
     - name: Checkout
       uses: actions/checkout@v2
       with:
@@ -20,10 +18,7 @@ jobs:
     - name: Access cloned repository content
       working-directory: python-api-handle-it
       run: |
-        ls
-        echo "Repo cloned"
         cd app
-        ls
 
     - name: Save repo 
       uses: actions/upload-artifact@v2
@@ -47,8 +42,6 @@ jobs:
     - name: Install dependencies
       working-directory: python-api-handle-it
       run: |
-        pwd
-        echo "----------------------"
         cd app
         pip install -r requirements.txt
         pip install pylint
@@ -148,7 +141,8 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Build image
+    - uses: actions/checkout@v2
+      name: Build image
       run: |
         pwd
         echo "------------"
