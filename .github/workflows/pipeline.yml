@@ -45,14 +45,15 @@ jobs:
     runs-on: ubuntu-latest
  
     steps:
-    - name: repo check
-      run: |
-        ls /home/runner/work/m2i-tp3/m2i-tp3/
-
-    - uses: actions/checkout@v3
+    - name: download artifact
+      uses: actions/download-artifact@v2
       with:
-        path: ./python-api-handle-it
+        name: upload artifact repo
       
+    - name: check repo
+      working-directory: python-api-handle-it
+        run: ls
+        
     - name: Install dependencies
       working-directory: python-api-handle-it
       run: |
