@@ -51,9 +51,15 @@ jobs:
  
     - name: Lint code
       run: | 
+        pwd
+        echo "---------------------"
         mkdir report
+        ls
+        echo "----------------------------"
         cd report
-        pylint **/*.py --fail-under=5 --output-format=text > ../report/pylint-report.txt
+        ls
+        echo "----------------------------"
+        pylint **/*.py --fail-under=5 --output-format=text > pylint-report.txt
  
     - name: Save lint report
       uses: actions/upload-artifact@v2
