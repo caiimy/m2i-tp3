@@ -82,11 +82,14 @@ jobs:
     - name: Install dependencies
       working-directory: python-api-handle-it
       run: |
+        ls report
+        echo "---------"
         pip install radon
  
     - name: Check complexity
+      working-directory: python-api-handle-it
       run: |
-        radon cc -s -a -nb --total-average --output-file=report/complexity-report.txt .
+        radon cc -s -a -nb --total-average --output-file=./report/complexity-report.txt .
  
     - name: Upload Complexity Report
       uses: actions/upload-artifact@v3
@@ -117,13 +120,14 @@ jobs:
     - name: Run tests
       working-directory: python-api-handle-it
       run: |
+        cd test/unit
         python -m unittest test/unit/test.py
  
     - name: Upload Test Report
       uses: actions/upload-artifact@v3
       with:
         name: test-report
-        path: test/unit/test-report.xml
+        path: ./python-api-handle-it
  
   build:
  
