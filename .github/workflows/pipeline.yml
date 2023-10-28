@@ -63,7 +63,7 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: pylint-report
-        path: ./report/pylint-report.txt
+        path: ./python-api-handle-it/report/pylint-report.txt
   # lint:
   #   needs: clone-repo
   #   runs-on: ubuntu-latest
