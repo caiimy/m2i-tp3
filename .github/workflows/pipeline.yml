@@ -49,11 +49,6 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: upload artifact repo
-      
-    - name: check repo
-      working-directory: python-api-handle-it
-        run: |
-          ls
 
     - name: Install dependencies
       working-directory: python-api-handle-it
