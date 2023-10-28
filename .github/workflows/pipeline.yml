@@ -18,7 +18,7 @@ jobs:
     - name: Access cloned repository content
       working-directory: python-api-handle-it
       run: |
-        cd app
+        ls
 
     - name: Save repo 
       uses: actions/upload-artifact@v2
