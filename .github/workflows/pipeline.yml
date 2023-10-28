@@ -25,6 +25,11 @@ jobs:
         cd app
         ls
 
+    - name: Save repo 
+      uses: actions/upload-artifact@v2
+      with:
+        name: upload artifact repo
+        path: ./python-api-handle-it
     # - name: linter Install dependencies
     #   working-directory: python-api-handle-it
     #   run: |
@@ -43,7 +48,7 @@ jobs:
     - name: repo check
       run: |
         ls /home/runner/work/m2i-tp3/m2i-tp3/
-        
+
     - uses: actions/checkout@v3
       with:
         path: ./python-api-handle-it
