@@ -30,13 +30,6 @@ jobs:
       with:
         name: upload artifact repo
         path: ./python-api-handle-it
-    # - name: linter Install dependencies
-    #   working-directory: python-api-handle-it
-    #   run: |
-    #     cd app
-    #     pip install -r requirements.txt
-    #     pip install pylint
-    #     ls
 
   lint:
  
@@ -52,36 +45,19 @@ jobs:
 
     - name: Install dependencies
       run: |
+        mkdir report
         cd app
         pip install -r requirements.txt
         pip install pylint
  
     - name: Lint code
-      run: pylint **/*.py --fail-under=5 --output-format=text > pylint-report.txt
+      run: pylint **/*.py --fail-under=5 --output-format=text > ../report/pylint-report.txt
  
     - name: Save lint report
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v2
       with:
         name: pylint-report
-        path: ./pylint-report.txt
-  # lint:
-  #   needs: clone-repo
-  #   runs-on: ubuntu-latest
-
-  #   steps:
-  #   - uses: actions/checkout@v2
-  #   - name: Install dependencies
-  #     run: |
-  #       pip install flake8
- 
-  #   - name: Linter code
-  #     run: flake8 .
- 
-  #   - name: Save lint report
-  #     uses: actions/upload-artifact@v1
-  #     with:
-  #       name: flake8-report
-  #       path: flake8-report.txt
+        path: ./python-api-handle-it
  
   cyclomatic:
  
@@ -91,7 +67,10 @@ jobs:
  
     steps:
  
-    - uses: actions/checkout@v3
+    - name: download artifact
+      uses: actions/download-artifact@v2
+      with:
+        name: pylint-report
  
     - name: Install dependencies
       run: |
@@ -99,13 +78,13 @@ jobs:
  
     - name: Check complexity
       run: |
-        radon cc -s -a -nb --total-average --output-file=complexity-report.txt .
+        radon cc -s -a -nb --total-average --output-file=./report/complexity-report.txt .
  
     - name: Upload Complexity Report
       uses: actions/upload-artifact@v3
       with:
         name: complexity-report
-        path: complexity-report.txt
+        path: ./python-api-handle-it
  
   test:
  
@@ -115,7 +94,10 @@ jobs:
  
     steps:
  
-    - uses: actions/checkout@v3
+    - name: download artifact
+      uses: actions/download-artifact@v2
+      with:
+        name: complexity-report
  
     - name: Install dependencies
       run: |
