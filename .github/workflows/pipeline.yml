@@ -9,14 +9,18 @@ jobs:
  
     steps:
     - name: git clone repo
-      run: git clone https://github.com/vanessakovalsky/python-api-handle-it.git
+      run: |
+        git clone https://github.com/vanessakovalsky/python-api-handle-it.git
 
     - name: Save repo
       uses: actions/upload-artifact@v1
       with:
         name: repo cloned
         path: ./python-api-handle-it
-        
+    
+    - name: check repo ls
+      run: ls
+
   lint:
  
     needs: clone-repo
