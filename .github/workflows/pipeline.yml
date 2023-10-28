@@ -21,7 +21,8 @@ jobs:
 
     - name: linter Install dependencies
       run: |
-        pip install -r ./app/requirements.txt
+        cd app
+        pip install -r requirements.txt
         pip install pylint
         ls
 
