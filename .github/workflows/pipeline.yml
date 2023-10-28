@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
  
     steps:
-    - uses: actions/checkout@v3
+    - name: git clone repo
       run: git clone https://github.com/vanessakovalsky/python-api-handle-it.git
 
     - name: Save repo
