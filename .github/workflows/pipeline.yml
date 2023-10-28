@@ -119,8 +119,8 @@ jobs:
     - name: Run tests
       working-directory: python-api-handle-it
       run: |
-        cd app/test/unit
-        python -m unittest test.py
+        cd app
+        python -m unittest test/unit/test.py
  
     - name: Upload Test Report
       uses: actions/upload-artifact@v3
