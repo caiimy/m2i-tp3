@@ -150,4 +150,4 @@ jobs:
  
     - name: Push image
       run: | 
-        docker push myimage:1.0.0
+        docker push ${{ secrets.DOCKER_USERNAME }}/myimage:1.0.0
