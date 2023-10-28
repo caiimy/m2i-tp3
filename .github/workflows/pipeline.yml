@@ -42,9 +42,12 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: upload artifact repo
+        path: ./python-api-handle-it
 
     - name: Install dependencies
       run: |
+        pwd
+        echo "----------------------"
         cd app
         pip install -r requirements.txt
         pip install pylint
