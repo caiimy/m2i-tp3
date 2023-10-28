@@ -19,6 +19,8 @@ jobs:
       working-directory: python-api-handle-it
       run: |
         ls
+        echo "----------------------"
+        ls ..
 
     - name: Save repo 
       uses: actions/upload-artifact@v2
