@@ -142,7 +142,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - uses: actions/checkout@v2
-      name: Build image
+    - name: Build image
       run: |
         pwd
         echo "------------"
