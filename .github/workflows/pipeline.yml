@@ -8,19 +8,15 @@ jobs:
     runs-on: ubuntu-latest
  
     steps:
- 
-    - name: Checkout Repo
-      uses: actions/checkout@v3
-      with:
-        repository: vanessakovalsky/python-api-handle-it
-        path: ./python-api-handle-it
+    - uses: actions/checkout@v3
+      run: git clone https://github.com/vanessakovalsky/python-api-handle-it.git
 
     - name: Save repo
       uses: actions/upload-artifact@v1
       with:
         name: repo cloned
         path: ./python-api-handle-it
-
+        
   lint:
  
     needs: clone-repo
@@ -29,11 +25,7 @@ jobs:
  
     steps:
  
-    - name: Checkout Repo
-      uses: actions/checkout@v3
-      with:
-        repository: caiimy/m2i-tp3/python-api-handle-it
-
+    - uses: actions/checkout@v3
     - name: Install dependencies
       run: |
         pip install -r ./app/requirements.txt
