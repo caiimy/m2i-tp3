@@ -21,6 +21,7 @@ jobs:
 
     - name: linter Install dependencies
       run: |
+        working-directory: .python-api-handle-it
         cd app
         pip install -r requirements.txt
         pip install pylint
