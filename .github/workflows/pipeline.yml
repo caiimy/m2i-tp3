@@ -77,14 +77,16 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: pylint-report
+        path: ./python-api-handle-it
  
     - name: Install dependencies
+      working-directory: python-api-handle-it
       run: |
         pip install radon
  
     - name: Check complexity
       run: |
-        radon cc -s -a -nb --total-average --output-file=./report/complexity-report.txt .
+        radon cc -s -a -nb --total-average --output-file=report/complexity-report.txt .
  
     - name: Upload Complexity Report
       uses: actions/upload-artifact@v3
@@ -104,13 +106,16 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: complexity-report
+        path: ./python-api-handle-it
  
     - name: Install dependencies
+      working-directory: python-api-handle-it
       run: |
         cd app
         pip install -r requirements.txt
  
     - name: Run tests
+      working-directory: python-api-handle-it
       run: |
         python -m unittest test/unit/test.py
  
